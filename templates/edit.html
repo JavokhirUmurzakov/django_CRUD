@@ -1,0 +1,83 @@
+{% load static %}
+{% block content %}
+    <h1 align="center">CRUD UPDATE PAGE</h1>
+        <div class="top">
+            <div class="flex_box">
+            <div class="items2"><h2 align="center">kitob ma'lumotlarni tahrirlang</h2></div>
+            <form method="post">{% csrf_token %}
+                <div class="items">
+                    <label>Kitob nomi</label>
+                    <input type="text" name="name" value="{{kitob.name}}"><br>
+
+                    <label>Muallifi</label>
+                    <input type="text"  name="author" value="{{kitob.author}}"><br>
+
+                    <label>Chop etilgan yili</label>
+                    <input type="text"  name="year" value="{{kitob.year}}"><br>
+
+                    <label>sahifalari soni</label>
+                    <input type="number"  name="pages" value="{{kitob.pages}}"><br>
+
+                    <label>Kitob rasmi</label>
+                    <input type="file"  name="image" value="{{kitob.image}}"><br>
+
+                    <button type="submit">Yuborish</button>
+                </div>
+
+            </form>
+            </div>
+        </div>
+{% endblock content %}
+
+<style>
+.container{
+    width: 100%;
+    display: flex;
+}
+.top{
+    width: 39%;
+    margin-right: 10px;
+}
+.below{
+    width: 59%;
+    margin-right: 20px;
+}
+.flex_box{
+    width: fit-content;
+    margin: 0 auto;
+}
+h1{
+    color: blue;
+}
+.items2{
+    width: 100%;
+    background-color: rgb(212, 205, 187);
+    padding: 3px 5px;
+    margin-bottom: 2px;
+    border-radius: 10px;
+}
+.items{
+    width:fit-content;
+    background-color: rgb(146, 145, 142);
+    padding: 30px 30px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+label{
+    margin: 10px 10px;
+    font-weight: 700;
+}
+input{
+    border-radius: 5px;
+    height: 30px;
+    margin: 10px 10px;
+}
+button{
+    height: 30px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+table{
+    border-collapse: separate;
+}
+</style>

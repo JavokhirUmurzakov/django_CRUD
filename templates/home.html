@@ -1,0 +1,109 @@
+{% load static %}
+{% block content %}
+    <h1 align="center">CRUD PAGE</h1>
+    <div class="container">
+
+        <div class="top">
+            <div class="flex_box">
+            <div class="items2"><h2 align="center">kitob ma'lumotlarni kiriting</h2></div>
+            <form method="post">{% csrf_token %}
+                <div class="items">
+
+                        {{form.as_p}}
+
+                    <button type="submit">Yuborish</button>
+                </div>
+
+            </form>
+            </div>
+        </div>
+
+        <div class="below">
+            <div class="items2"><h2 align="center">kiritilgan ma'lumotlar</h2></div>
+                <div class="flex_box">
+                    <table border="1">
+                        <tr>
+                            <th class="colour">Kitob nomi</th>
+                             <th class="colour">Kitob muallifi</th>
+                             <th class="colour">Chop etilgan sanasi</th>
+                             <th class="colour">Sahifalar soni</th>
+                             <th class="colour">Kitob rasmi</th>
+                             <th class="colour"> O'chirish</th>
+                             <th class="colour"> Tahrirlash</th>
+                        </tr>
+                        {% for i in books %}
+                             <tr>
+                                <th>{{i.name}}</th>
+                                <th>{{i.author}}</th>
+                                <th>{{i.year}}</th>
+                                <th>{{i.pages}}</th>
+                                <th><img src="{{i.image.url}}" width="70px"></th>
+                                 <th><button><a href="{% url 'delete_page' i.pk %}" class="nonline">O'chirish</a> </button></th>
+                                 <th><button><a href="{% url 'edit_page' i.pk %}" class="nonline">Tahrirlash</a> </button></th>
+                             </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+           </div>
+    </div>
+{% endblock content %}
+
+
+<style>
+.container{
+    width: 100%;
+    display: flex;
+}
+.top{
+    width: 39%;
+    margin-right: 10px;
+}
+.below{
+    width: 59%;
+    margin-right: 20px;
+}
+.flex_box{
+    width:fit-content;
+    margin: 0 auto;
+}
+h1{
+    color: blue;
+}
+.items2{
+    width: 100%;
+    background-color: rgb(212, 205, 187);
+    padding: 3px 5px;
+    margin-bottom: 2px;
+    border-radius: 10px;
+}
+.items{
+    width:fit-content;
+    background-color: rgb(146, 145, 142);
+    padding: 30px 30px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+label{
+    margin: 10px 10px;
+    font-weight: 700;
+}
+input{
+    border-radius: 5px;
+    height: 30px;
+    margin: 10px 10px;
+}
+button{
+    height: 30px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+table{
+    width: 100%;
+}
+.colour{
+background-color:blue;
+    }
+.nonline{
+    text-decoration:none;
+    }
+</style>
